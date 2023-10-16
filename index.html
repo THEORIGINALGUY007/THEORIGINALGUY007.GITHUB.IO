@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fitness Streak Forum</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Fitness Streak Forum</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Discussion Board</h2>
+            <ul id="discussion-list">
+                <!-- Sample Post 1 -->
+                <li class="post">
+                    <h3>Day 1: Cardio</h3>
+                    <p>Today I did 30 minutes of cardio. How about you?</p>
+                    <div class="reactions">
+                        <button class="like">👍</button>
+                        <button class="dislike">👎</button>
+                        <button class="heart">❤️</button>
+                    </div>
+                    <div class="comment-section">
+                        <input type="text" placeholder="Add a comment" class="comment-input">
+                        <button class="comment-button">Comment</button>
+                        <div class="comments">
+                            <!-- Comments will be added here using JavaScript -->
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h2>Post Your Challenge</h2>
+            <form id="post-form">
+                <label for="challenge">What challenge did you complete today?</label>
+                <input type="text" id="challenge" name="challenge">
+                <button type="submit">Post</button>
+            </form>
+        </section>
+    </main>
+   
+    </footer>
+    <script src="./main.js"></script>
+</body>
+</html>
