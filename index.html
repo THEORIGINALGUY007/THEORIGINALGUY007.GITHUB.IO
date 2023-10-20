@@ -24,7 +24,7 @@
                     <div class="comment-section">
                         <input type="text" placeholder="Add a comment" class="comment-input">
                         <button class="comment-button">Comment</button>
-                        <div class="comments">
+                        <div class="comments" id="comments-list">
                             <!-- Comments will be added here using JavaScript -->
                         </div>
                     </div>
@@ -33,11 +33,11 @@
         </section>
         <section>
             <h2>Post Your Challenge</h2>
-            <form id="post-form">
+            <!-- <form id="post-form"> -->
                 <label for="challenge">What challenge did you complete today?</label>
                 <input type="text" id="challenge" name="challenge">
-                <button type="submit">Post</button>
-            </form>
+                <button type="button" id="add-post">Post</button>
+            <!-- </form> -->
         </section>
     </main>
    
