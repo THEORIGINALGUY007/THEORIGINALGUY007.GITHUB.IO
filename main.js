@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     let id = 0;
+    const idData = getData();
+    if (idData?.length > 0) {
+        id = idData.length;
+    }
     function createPostObject(id, challengeText, like, dislike, heart, comments) {
         return {
             id,
@@ -10,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
             comments
         }
     }
-    function renderPost(challengeText, like, dislike, heart, comments) {
+    function renderPost(id, challengeText, like, dislike, heart, comments) {
         if (challengeText) {
             const newPost = document.createElement("li");
             newPost.className = "post";
@@ -69,11 +73,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const addPost = document.getElementById("add-post");
 
     const data = getData();
-    console.log(data)
     if (data?.length > 0) {
         data.forEach(element => {
-            const { challengeText, like, dislike, heart, comments } = element;
-            renderPost(challengeText, like, dislike, heart, comments);
+            const { id, challengeText, like, dislike, heart, comments } = element;
+            renderPost(id, challengeText, like, dislike, heart, comments);
         });
     }
     discussionList.addEventListener("click", function (event) {
@@ -92,8 +95,15 @@ document.addEventListener("DOMContentLoaded", function () {
             const commentText = commentInput.value;
 
             if (commentText) {
-                const comments = event.target.nextElementSibling; console.log(event);
-                console.log(comments);
+                const comments = event.target.nextElementSibling;
+                const id = parseInt(comments.id.split('-')[1]);
+                const data = getData();
+                const newData = data.map(d => {
+                    if (d.id === id)
+                        d.comments.push(commentText);
+                    return d
+                });
+                localStorage.setItem("data", JSON.stringify(newData));
                 const comment = document.createElement("div");
                 comment.className = "comment";
                 comment.textContent = commentText;
@@ -110,6 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (challengeText) {
             const newId = id + 1;
+            id = newId;
             const newPost = document.createElement("li");
             newPost.className = "post";
             newPost.innerHTML = `
